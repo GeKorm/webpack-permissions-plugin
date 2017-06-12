@@ -1,0 +1,26 @@
+{
+  "name": "webpack-permissions-plugin",
+  "version": "0.0.1",
+  "author": "George Kormaris <gekorm@gmail.com>",
+  "description": "A webpack plugin to set permissions for your output files and folders",
+  "homepage": "https://github.com/GeKorm/webpack-permissions-plugin",
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [
+    "webpack",
+    "plugin",
+    "permissions",
+    "node",
+    "chmod"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GeKorm/webpack-permissions-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GeKorm/webpack-permissions-plugin/issues"
+  },
+  "dependencies": {
+    "filehound": "^1.16.1"
+  }
+}
