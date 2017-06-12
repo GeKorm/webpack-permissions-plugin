@@ -1,26 +1,33 @@
 # Webpack Permissions Plugin
 A webpack plugin to manage the permissions of output files and directories
 
+### Install
+
+- Yarn: `yarn add -D webpack-permissions-plugin`
+- Npm: `npm i -D webpack-permissions-plugin`
+
 ### Usage
 
-1. Install:
-    - Yarn: `yarn add -D webpack-permissions-plugin`
-    - Npm: `npm i -D webpack-permissions-plugin`
+**buildFolders** (*String: path*) The directories to chmod recursively  
+**buildFiles** (*String: path*) The specific files to chmod  
+  
+Files under *buildFolders* get file-specific permissions.
 
 ###### Simple: Directories 644, Files 755
 
-```ecmascript 6
+```javascript
 const PermissionsOutputPlugin = require('webpack-permissions-plugin');
 
 plugins.push(new PermissionsOutputPlugin({
   buildFolders: [path.resolve(__dirname, 'resources/'), path.resolve(__dirname, 'dist/')],
+  // dist/app.js is redundant here, it already got 755 by being included in the buildFolder above
   buildFiles: [path.resolve(__dirname, 'someFile.js'), path.resolve(__dirname, 'dist/app.js')]
 }));
 ```
 ###### Advanced: Per-path modes
 
-Mode: an octal string or octal integer ('755' or 0o755)
-```ecmascript 6
+Mode: an octal string or octal integer (eg. `755` or `0o755`)
+```javascript
 const PermissionsOutputPlugin = require('webpack-permissions-plugin');
 
 plugins.push(new PermissionsOutputPlugin({
@@ -39,12 +46,12 @@ plugins.push(new PermissionsOutputPlugin({
   // buildFiles can override buildFolders modes
   buildFiles: [
     {
-      path: path.resolve(__dirname, 'someFile.js'), // Everything under resources/ gets these modes
+      path: path.resolve(__dirname, 'someFile.js'),
       fileMode: '755'
     },
     {
-      path: path.resolve(__dirname, 'dist/app.js'), // Everything under resources/ gets these modes
-      fileMode: '777' // Overrides previous dist/ modes
+      path: path.resolve(__dirname, 'dist/app.js'),
+      fileMode: '777' // Overrides previous dist/ mode
     },
   ]
 }));
