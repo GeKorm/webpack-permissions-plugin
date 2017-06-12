@@ -168,4 +168,5 @@ fabric.properties
 
 # Yarn Integrity file
 
-# dotenv environment variables file
+# All of intellij
+/.idea/
