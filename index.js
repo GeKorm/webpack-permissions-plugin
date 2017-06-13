@@ -4,7 +4,6 @@ const FileHound = require('filehound');
 function PermissionsOutputPlugin(options) {
   this.options = options;
 }
-const b = 0o755;
 
 PermissionsOutputPlugin.prototype.apply = function (compiler) {
   compiler.plugin('done', () => {
@@ -34,3 +33,5 @@ PermissionsOutputPlugin.prototype.apply = function (compiler) {
     }
   });
 };
+
+module.exports = PermissionsOutputPlugin;

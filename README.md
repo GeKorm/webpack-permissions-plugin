@@ -19,9 +19,15 @@ Files under *buildFolders* get file-specific permissions.
 const PermissionsOutputPlugin = require('webpack-permissions-plugin');
 
 plugins.push(new PermissionsOutputPlugin({
-  buildFolders: [path.resolve(__dirname, 'resources/'), path.resolve(__dirname, 'dist/')],
-  // dist/app.js is redundant here, it already got 755 by being included in the buildFolder above
-  buildFiles: [path.resolve(__dirname, 'someFile.js'), path.resolve(__dirname, 'dist/app.js')]
+  buildFolders: [
+    path.resolve(__dirname, 'resources/'),
+    path.resolve(__dirname, 'dist/')
+    ],
+  buildFiles: [
+    path.resolve(__dirname, 'someFile.js'),
+    path.resolve(__dirname, 'dist/app.js')
+  ]
+  // dist/app.js is redundant, it already got 755 by being included in the buildFolder above
 }));
 ```
 ###### Advanced: Per-path modes
@@ -43,7 +49,6 @@ plugins.push(new PermissionsOutputPlugin({
       dirMode: '644'
     }
   ],
-  // buildFiles can override buildFolders modes
   buildFiles: [
     {
       path: path.resolve(__dirname, 'someFile.js'),
