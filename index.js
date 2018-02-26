@@ -33,7 +33,7 @@ PermissionsOutputPlugin.prototype.apply = function (compiler) {
     }
   }
 
-  const webpackTap = compiler.hooks && compiler.hooks.done && compiler.hooks.done.tap;
+  const webpackTap = compiler.hooks && compiler.hooks.done && compiler.hooks.done.tap.bind(compiler.hooks.done);
 
   if (webpackTap) {
     webpackTap('WebpackPermissionsPlugin', changeFilePermissions);
