@@ -1,5 +1,5 @@
 # Webpack Permissions Plugin
-A webpack plugin to manage the permissions of output files and directories
+A webpack plugin to manage the permissions of output files and directories  
 Tested with **Webpack 2, 3 and 4**
 
 ### Install
