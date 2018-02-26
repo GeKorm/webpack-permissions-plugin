@@ -6,7 +6,7 @@ function PermissionsOutputPlugin(options) {
 }
 
 PermissionsOutputPlugin.prototype.apply = function (compiler) {
-  compiler.plugin('done', () => {
+  compiler.hooks.done.tap('WebpackPermissionsPlugin', () => {
     if (this.options.buildFolders) {
       for (const dir of this.options.buildFolders) {
         const dirs = FileHound.create()
