@@ -5,7 +5,7 @@ function PermissionsOutputPlugin(options) {
   this.options = options;
 }
 
-PermissionsOutputPlugin.prototype.apply = function (compiler) {
+PermissionsOutputPlugin.prototype.apply = function(compiler) {
   const changeFilePermissions = () => {
     if (this.options.buildFolders) {
       for (const dir of this.options.buildFolders) {
@@ -31,9 +31,12 @@ PermissionsOutputPlugin.prototype.apply = function (compiler) {
         fs.chmodSync(file.path || file, file.fileMode || 755);
       }
     }
-  }
+  };
 
-  const webpackTap = compiler.hooks && compiler.hooks.done && compiler.hooks.done.tap.bind(compiler.hooks.done);
+  const webpackTap =
+    compiler.hooks &&
+    compiler.hooks.done &&
+    compiler.hooks.done.tap.bind(compiler.hooks.done);
 
   if (webpackTap) {
     webpackTap('WebpackPermissionsPlugin', changeFilePermissions);
