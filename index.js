@@ -19,16 +19,22 @@ PermissionsOutputPlugin.prototype.apply = function(compiler) {
           .directory()
           .findSync();
         for (const di of dirs) {
-          fs.chmodSync(di, dir.dirMode || 644);
+          if (fs.existsSync(di)) {
+            fs.chmodSync(di, dir.dirMode || 644);
+          }
         }
         for (const fi of files) {
-          fs.chmodSync(fi, dir.fileMode || 755);
+          if (fs.existsSync(fi)) {
+            fs.chmodSync(fi, dir.fileMode || 755);
+          }
         }
       }
     }
     if (this.options.buildFiles) {
       for (const file of this.options.buildFiles) {
-        fs.chmodSync(file.path || file, file.fileMode || 755);
+        if (fs.existsSync(file.path || file)) {
+          fs.chmodSync(file.path || file, file.fileMode || 755);
+        }
       }
     }
   };
