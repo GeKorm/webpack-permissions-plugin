@@ -1,6 +1,6 @@
 {
   "name": "webpack-permissions-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2-beta.0",
   "author": "George Kormaris <npm@gekorm.com>",
   "description": "A webpack plugin to set permissions for your output files and folders",
   "homepage": "https://github.com/GeKorm/webpack-permissions-plugin",
@@ -24,6 +24,6 @@
     "filehound": "^1.16.4"
   },
   "devDependencies": {
-    "prettier": "^1.14.2"
+    "prettier": "^1.15.2"
   }
 }
