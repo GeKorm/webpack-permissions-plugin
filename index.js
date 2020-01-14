@@ -41,12 +41,12 @@ PermissionsOutputPlugin.prototype.apply = function(compiler) {
           .findSync();
         for (const di of dirs) {
           if (fs.existsSync(di)) {
-            fs.chmodSync(di, dir.dirMode || 644);
+            fs.chmodSync(di, dir.dirMode || 0o644);
           }
         }
         for (const fi of files) {
           if (fs.existsSync(fi)) {
-            fs.chmodSync(fi, dir.fileMode || 755);
+            fs.chmodSync(fi, dir.fileMode || 0o755);
           }
         }
       }
@@ -54,7 +54,7 @@ PermissionsOutputPlugin.prototype.apply = function(compiler) {
     if (this.options.buildFiles) {
       for (const file of this.options.buildFiles) {
         if (fs.existsSync(file.path || file)) {
-          fs.chmodSync(file.path || file, file.fileMode || 755);
+          fs.chmodSync(file.path || file, file.fileMode || 0o755);
         }
       }
     }
