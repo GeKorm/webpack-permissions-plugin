@@ -25,7 +25,7 @@ PermissionsOutputPlugin.prototype.apply = function(compiler) {
     if (this.options.buildFolders) {
       for (const dir of this.options.buildFolders) {
         const path = dir.path || dir;
-        if (!fs.existsSync(dir)) {
+        if (!fs.existsSync(path)) {
           warn(logger, path);
           return;
         }
