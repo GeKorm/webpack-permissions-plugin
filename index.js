@@ -36,8 +36,6 @@ PermissionsOutputPlugin.prototype.apply = function(compiler) {
           .findSync();
         const files = FileHound.create()
           .path(path)
-          .not()
-          .directory()
           .findSync();
         for (const di of dirs) {
           if (fs.existsSync(di)) {
