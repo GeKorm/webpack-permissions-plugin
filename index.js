@@ -16,7 +16,7 @@ function PermissionsOutputPlugin(options) {
   this.options = options;
 }
 
-PermissionsOutputPlugin.prototype.apply = function(compiler) {
+PermissionsOutputPlugin.prototype.apply = function (compiler) {
   const changeFilePermissions = () => {
     const logger =
       compiler.getInfrastructureLogger &&
@@ -30,13 +30,8 @@ PermissionsOutputPlugin.prototype.apply = function(compiler) {
           return;
         }
 
-        const dirs = FileHound.create()
-          .path(path)
-          .directory()
-          .findSync();
-        const files = FileHound.create()
-          .path(path)
-          .findSync();
+        const dirs = FileHound.create().path(path).directory().findSync();
+        const files = FileHound.create().path(path).findSync();
         for (const di of dirs) {
           if (fs.existsSync(di)) {
             fs.chmodSync(di, dir.dirMode || 0o644);
@@ -49,6 +44,7 @@ PermissionsOutputPlugin.prototype.apply = function(compiler) {
         }
       }
     }
+
     if (this.options.buildFiles) {
       for (const file of this.options.buildFiles) {
         if (fs.existsSync(file.path || file)) {
