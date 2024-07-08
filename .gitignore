@@ -166,7 +166,14 @@ fabric.properties
 
 # Output of 'npm pack'
 
-# Yarn Integrity file
+# Yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # All of intellij
 /.idea/
